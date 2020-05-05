@@ -14,6 +14,10 @@ $password = get_post('password');
 
 $db = get_db_connect();
 
+if(is_valid_csrf_token($token) === false){
+  set_error('不正なページ移動です');
+  redirect_to(HOME_URL);
+}
 
 $user = login_as($db, $name, $password);
 if( $user === false){

@@ -25,6 +25,12 @@ $stock = get_post('stock');
 
 $image = get_file('image');
 
+$token = get_post('token');
+if(is_valid_csrf_token($token) === false){
+  set_error('不正なページ移動です');
+  redirect_to(ADMIN_URL);
+}
+
 if(regist_item($db, $name, $price, $stock, $status, $image)){
   set_message('商品を登録しました。');
 }else {
