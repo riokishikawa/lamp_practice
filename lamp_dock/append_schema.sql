@@ -23,7 +23,3 @@ ALTER TABLE `histories`
 
 ALTER TABLE `history_details`
   MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
-
-
-
-
