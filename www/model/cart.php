@@ -138,7 +138,7 @@ if(execute_query($db, $sql)===false){
       )
     VALUES(?, ?, ?, ?)
   ";
-  if(execute_query($db, $sql, array($order_id,$item_id,$price,$amount)) === false){
+  if(execute_query($db, $sql, array($order_id,$cart['item_id'],$cart['price'],$cart['amount'])) === false){
       set_error('エラーです');
       $success=false;
     }
@@ -151,6 +151,7 @@ if(execute_query($db, $sql)===false){
   } else{
   // ロールバック処理
   $db ->rollback();
+  return false;
   }
 }
   delete_user_carts($db, $carts[0]['user_id']);
