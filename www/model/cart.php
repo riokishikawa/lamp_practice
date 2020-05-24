@@ -101,7 +101,7 @@ function delete_cart($db, $cart_id){
   return execute_query($db, $sql, array($cart_id));
 }
 
-function purchase_carts($db, $carts){
+function purchase_carts($db, $carts, $user_id){
   if(validate_cart_purchase($carts) === false){
     return false;
   }
@@ -111,10 +111,10 @@ function purchase_carts($db, $carts){
   // 履歴テーブルに追加
    $sql = "
   INSERT INTO
-    histories()
-  VALUES()
+    histories(user_id)
+  VALUES(?)
 ";
-if(execute_query($db, $sql)===false){
+if(execute_query($db, $sql, array($user_id))===false){
   set_error('エラーです');
   $success=false;
 } else{
