@@ -28,7 +28,7 @@
         <tbody>
           <?php foreach($history_details as $history_detail){ ?>
           <tr>
-            <td><?php print($history_detail['detail_id']);?></td>
+            <td><?php print($history_detail['item_id']);?></td>
             <td><?php print($history_detail['price']);?></td>
             <td><?php print($history_detail['amount']);?></td>
             <td><?php print(number_format($history_detail['subtotal'])); ?>円</td>

@@ -4,6 +4,8 @@ require_once '../model/functions.php';
 require_once '../model/cart.php';
 require_once '../model/user.php';
 require_once '../model/history.php';
+require_once '../model/item.php';
+
 
 
 
@@ -16,6 +18,8 @@ if(is_logined() === false){
 $db = get_db_connect();
 $user = get_login_user($db);
 $order_id = get_get('order_id');
+$item_id = get_get('item_id');
+
 $history_details= get_history_details($db, $order_id);
 
 
