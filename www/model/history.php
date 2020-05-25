@@ -35,14 +35,17 @@ $param = array();
 function get_history_details($db, $order_id){
   $sql = '
     SELECT
-      item_id,
+      details,
       price,
       amount,
-      sum(price*amount) as all
+      price*amount as subtotal
 
     FROM
-      history_details  
+      history_details
+    
+    WHERE
+    　 order_id = ?
   ';
 
-  return fetch_all_query($db, $sql);
+  return fetch_all_query($db, $sql, array('order_id'));
 }
