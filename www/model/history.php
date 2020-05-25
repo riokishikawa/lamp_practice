@@ -43,9 +43,7 @@ function get_history_details($db, $order_id){
     FROM
       history_details
     WHERE
-      order_id = ?
-    LIMIT 1
-
+      order_id = ?    
     
   ';
 
