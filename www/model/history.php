@@ -36,12 +36,19 @@ function get_history_details($db, $order_id){
   $sql = '
     SELECT
       history_details.item_id,
-      price,
+      history_details.price,
       amount,
-      price*amount as subtotal
+      history_details.price*amount as subtotal
 
     FROM
       history_details
+
+    INNER JOIN
+      items
+
+    ON
+      history_details.item_id = items.item_id
+      
     WHERE
       order_id = ?    
     
