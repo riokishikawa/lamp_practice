@@ -15,7 +15,11 @@
 
     <?php include VIEW_PATH . 'templates/messages.php'; ?>
 
-
+<ul>
+    <li>注文番号:<?php print($order_id);?></li>
+    <li>購入日時:<?php print($created);?></li>
+    <li>合計金額:<?php print(number_format($total));?>円</li>
+</ul>
       <table class="table table-bordered text-center">
         <thead class="thead-light">
           <tr>
@@ -28,8 +32,8 @@
         <tbody>
           <?php foreach($history_details as $history_detail){ ?>
           <tr>
-            <td><?php print($history_detail['item_id']);?></td>
-            <td><?php print($history_detail['price']);?></td>
+            <td><?php print($history_detail['name']);?></td>
+            <td><?php print(number_format($history_detail['price']));?>円</td>
             <td><?php print($history_detail['amount']);?></td>
             <td><?php print(number_format($history_detail['subtotal'])); ?>円</td>
           </tr>

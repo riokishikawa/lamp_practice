@@ -35,8 +35,11 @@ $param = array();
 function get_history_details($db, $order_id){
   $sql = '
     SELECT
+      history_details.order_id,
       history_details.item_id,
       history_details.price,
+      histories.created,
+      name,
       amount,
       history_details.price*amount as subtotal
 
@@ -46,11 +49,18 @@ function get_history_details($db, $order_id){
     INNER JOIN
       items
 
+
     ON
       history_details.item_id = items.item_id
-      
+
+    INNER JOIN
+      histories
+
+    ON
+      history_details.order_id = histories.order_id
+
     WHERE
-      order_id = ?    
+      history_details.order_id = ?    
     
   ';
 
