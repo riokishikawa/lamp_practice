@@ -206,3 +206,32 @@ function is_valid_item_status($status){
   }
   return $is_valid;
 }
+
+function get_best_items($db, $item_id){
+  $sql = "
+    SELECT
+      name,
+      Sum(amount)
+    
+    FROM
+      history_details
+
+    INNER JOIN
+      items
+
+    ON
+      history_details.item_id = items.item_id
+
+    GROUP BY
+      name
+    
+    ORDER BY
+      Sum(amount) desc
+
+    LIMIT
+      3
+
+  ";
+
+  return fetch_query($db, $sql, array($item_id));
+}
