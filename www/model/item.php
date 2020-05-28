@@ -207,11 +207,14 @@ function is_valid_item_status($status){
   return $is_valid;
 }
 
-function get_best_items($db, $item_id){
+function get_best_items($db){
   $sql = "
     SELECT
+      history_details.item_id,
       name,
-      Sum(amount)
+      image,
+      items.price,
+      stock
     
     FROM
       history_details
@@ -221,9 +224,11 @@ function get_best_items($db, $item_id){
 
     ON
       history_details.item_id = items.item_id
+    WHERE
+      status = 1
 
     GROUP BY
-      name
+      history_details.item_id
     
     ORDER BY
       Sum(amount) desc
@@ -233,5 +238,5 @@ function get_best_items($db, $item_id){
 
   ";
 
-  return fetch_query($db, $sql, array($item_id));
+  return fetch_all_query($db, $sql);
 }
