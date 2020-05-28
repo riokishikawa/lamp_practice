@@ -15,5 +15,7 @@ $user = get_login_user($db);
 
 $token = get_csrf_token();
 $items = get_open_items($db);
+$best_items = get_best_items($db);
+
 
 include_once VIEW_PATH . 'index_view.php';
